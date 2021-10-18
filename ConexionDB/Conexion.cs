@@ -4,17 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace ConexionDB
 {
     class Conexion
     {
-        public static MySqlConnection obtenerConexion()
+        //propiedades
+        private MySqlConnection conn =
+            new MySqlConnection("Server=localhost;Database=smis0000;Uid=root;" +
+                "Pwd=usbw;SSL Mode=None");
+        public MySqlCommand command;
+
+        //abrir conexion
+        public MySqlConnection openConnection()
         {
-            MySqlConnection conexion = new MySqlConnection(@"Server=localhost;Database=SMIS006121;
-                                    Uid = root; Pwd = usbw; SSL Mode = None");
-            conexion.Open();
-            return conexion;
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            return conn;
         }
+
+        //cerrar la conexion
+        public MySqlConnection closeConnection()
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+            return conn;
+        }
+
     }
 }

@@ -20,7 +20,8 @@ namespace ConexionDB
 
         private void frmPatient_Load(object sender, EventArgs e)
         {
-
+           
+          
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -51,5 +52,7 @@ namespace ConexionDB
             txtSick.Clear();
 
         }
+
+     
     }
 }
